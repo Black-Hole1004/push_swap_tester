@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # # $1 = how many arguments you want
-# #=====================================================================================
 
 generate_random_numbers() {
 	random_numbers=()
@@ -58,14 +57,19 @@ echo  -e "$color Number of moves => : {$number_of_moves}$end_color"
 #=====================================================================================
 
 os=$(uname)
-if [ $1 == '-b' ]; then
-./push_swap ${random_numbers[@]} | ./checker ${random_numbers[@]}
-elif [ "$os" == "Darwin" ]; then
-./push_swap ${random_numbers[@]} | ./checker_Mac ${random_numbers[@]}
+if [ "$os" == "Darwin" ]; then
+result_Mac=$(./push_swap ${random_numbers[@]} | ./checker_Mac ${random_numbers[@]})
 elif [ "$os" == "Linux" ]; then
-  ./push_swap ${random_numbers[@]} | ./checker_linux ${random_numbers[@]}
+result_linux=$(./push_swap ${random_numbers[@]} | ./checker_linux ${random_numbers[@]})
 else
   exit;
 fi
-sleep 0.5;
+
+if [ $1 == '-b' ]; then
+echo "your checker result:"
+./push_swap ${random_numbers[@]} | ./checker ${random_numbers[@]}
+echo "42 checker result : "
+echo "$result_linux"
+fi
+sleep 0.8;
 #=====================================================================================
