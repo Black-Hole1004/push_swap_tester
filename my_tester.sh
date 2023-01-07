@@ -1,7 +1,29 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    my_tester.sh                                       :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ahmaymou <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/01/07 15:42:23 by ahmaymou          #+#    #+#              #
+#    Updated: 2023/01/07 15:55:49 by ahmaymou         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 #!/bin/bash
 
 # # $1 = how many arguments you want
-
+#set -o pipefail
+if [[ $1 == 'pb' ]]; then
+	result=$(echo -e "pb\npb\npb\npb" | ./checker "1 2")
+	if [[ $? -ne 0 ]]; then
+		echo -e "\033[91m SEGFAULT \033[0m"
+	else
+		echo -e "\033[92m OK! \033[0m"
+	fi	
+exit ;
+fi
+#====================================================================================
 generate_random_numbers() {
 	random_numbers=()
 	number_of_numbers=$1

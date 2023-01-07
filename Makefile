@@ -6,7 +6,7 @@
 #    By: blackhole <blackhole@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/19 13:36:46 by ahmaymou          #+#    #+#              #
-#    Updated: 2023/01/05 16:27:53 by blackhole        ###   ########.fr        #
+#    Updated: 2023/01/07 14:48:50 by ahmaymou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,7 @@ tester=my_tester.sh
 
 
 test :
-	cd .. && make && cp push_swap my_tester
-	cd .. && make fclean
+
 #======================= running my tester with various tests ===================#
 	@echo "number of args     : [0]"
 	@bash $(tester) -m 0
@@ -28,8 +27,6 @@ test :
 	@echo "number of args     : [500]"
 	@bash $(tester) -m 500
 test_bonus :
-	cd .. && make bonus && cp push_swap my_tester && cp checker my_tester
-	cd .. && make fclean
 #======================= running checker ===================#
 	@echo "=========================================="
 	@echo "number of args     : [0]"
@@ -46,3 +43,5 @@ test_bonus :
 	@echo "=========================================="
 	@echo "number of args     : [500]"
 	@bash $(tester) -b 500
+	@echo "Testing to pb more than num of args ..."
+	@bash $(tester) pb
