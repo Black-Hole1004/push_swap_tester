@@ -69,7 +69,11 @@ if [ $1 == '-b' ]; then
 echo "your checker result:"
 ./push_swap ${random_numbers[@]} | ./checker ${random_numbers[@]}
 echo "42 checker result : "
-echo "$result_linux"
+if [ "$os" == "Darwin" ]; then
+	echo "$result_Mac"
+else
+	echo "$result_linux"
+fi
 fi
 sleep 0.8;
 #=====================================================================================
